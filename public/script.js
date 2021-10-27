@@ -7,8 +7,8 @@ let outputs = []
 
 window.onload = function () {
 
-    fetch('/save')
-    //fetch('https://journey-usa.herokuapp.com/save')
+    //fetch('/save')
+    fetch('https://journey-usa.herokuapp.com/save')
         .then(response => response.json())
         .then(data => {
             console.log(data)
@@ -113,8 +113,8 @@ function save(number) {
 
  
 
-    fetch('/save', {
-    //fetch('https://journey-usa.herokuapp.com/save', {
+    //fetch('/save', {
+    fetch('https://journey-usa.herokuapp.com/save', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
