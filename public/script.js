@@ -7,10 +7,11 @@ let outputs = []
 
 window.onload = function () {
 
-    //fetch('/save')
-    fetch('https://journey-usa.herokuapp.com/save')
+    fetch('/save')
+    //fetch('https://journey-usa.herokuapp.com/save')
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             for(var i=0; i < data.data.length; i++){
                 if (data.data[i].happy == true) {
                     document.getElementById('e' + data.data[i].id + '_1').checked = true;
@@ -112,8 +113,8 @@ function save(number) {
 
  
 
-    //fetch('/save', {
-    fetch('https://journey-usa.herokuapp.com/save', {
+    fetch('/save', {
+    //fetch('https://journey-usa.herokuapp.com/save', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',

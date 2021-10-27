@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const handler_route = require('./routes/handler')
+const delete_route = require('./routes/delete')
 
 
 
@@ -16,6 +17,7 @@ app.use(express.json());
 
 app.use(express.static(__dirname + '/public'));
 app.use('/save', handler_route);
+app.use('/delete',delete_route);
 
 app.listen(port);
 console.log('Server started at http://localhost:' + port);

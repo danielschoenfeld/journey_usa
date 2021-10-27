@@ -71,19 +71,7 @@ router.post('/', (req, res) => {
             dataset.data.push({ "id": id, "rating": rating, "title": title, "happy": happy, "overwhelmed": overwhelmed, "sad": sad, "meh": meh, "heart": heart })
         }
 
-        /*
-        reset = {
-            "data": []
-        }
-        var jsonreset = JSON.stringify(reset);
-        fs.writeFile("dataset.json", jsonreset, 'utf8', function (err) {
-            if (err) {
-                console.log("An error occured while writing JSON Object to File.");
-                return console.log(err);
-            }
 
-            console.log("JSON file has been saved.");
-        });*/
         var jsonContent = JSON.stringify(dataset);
         fs.writeFile("dataset.json", jsonContent, 'utf8', function (err) {
             if (err) {
@@ -232,11 +220,32 @@ router.post('/', (req, res) => {
 })
 
 
+router.get('/delete', (req, res) => {
+    var dataset = require('../dataset.json');
+    dataset = {
+        "data": []
+    }
+    var jsonContent = JSON.stringify(dataset);
+    fs.writeFile("dataset.json", jsonContent, 'utf8', function (err) {
+        if (err) {
+            console.log("An error occured while writing JSON Object to File.");
+            return console.log(err);
+        }
+
+        console.log("JSON file has been cleared.");
+    });
+    var dataset_new = require('../dataset.json');
+    console.log(dataset_new)
+    res.send("Worked")
+})
 
 router.get('/', (req, res) => {
-    var dataset = require('../dataset.json');
-    res.send(dataset)
+    var dataset_get = require('../dataset.json');
+    console.log(dataset_get)
+    res.send(dataset_get)
 })
+
+
 
 
 
