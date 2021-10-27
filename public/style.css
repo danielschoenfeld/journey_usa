@@ -16,7 +16,7 @@ background: linear-gradient(225deg, rgba(223,213,202,1) 0%, rgba(217,204,191,1) 
 }
 
 #slider {
-  height: 88vh;
+  height: 93vh;
   position: relative;
   perspective: 1000px;
   transform-style: preserve-3d; 
@@ -27,7 +27,7 @@ background: linear-gradient(225deg, rgba(223,213,202,1) 0%, rgba(217,204,191,1) 
     margin-right: 0;
   width: 73vw;
   max-width: 1000px;
-  height: 88vh;
+  height: 93vh;
   border-radius: 1.5vh;
   position: absolute;
   left: 0; right: 0;
