@@ -2,14 +2,136 @@ const fs = require('fs')
 const express = require('express')
 const router = express.Router()
 
+const mongoose = require('mongoose');
+const { MongoClient } = require('mongodb');
+
+//const uri = "mongodb+srv://danieltest:test@cluster0.bmbjr.mongodb.net/day_data?retryWrites=true&w=majority";
+//const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+/*client.connect(err => {
+    const collection = client.db("day_data").collection("USA_collection");
+    // perform actions on the collection object
+    console.log(client)
+
+    client.close();
+});*/
+
+const uri = "mongodb+srv://danieltest:test@cluster0.bmbjr.mongodb.net/day_data?retryWrites=true&w=majority";
+mongoose.connect(uri)
+
+/*
+async function main() {
+    const uri = "mongodb+srv://danieltest:test@cluster0.bmbjr.mongodb.net/day_data?retryWrites=true&w=majority";
+
+    const client = new MongoClient(uri)
+
+    try{
+        await client.connect();
+
+        await listDatabases(client);
+    }catch (e) {
+        console.error(e)
+    } finally {
+        await client.close();
+    }
+    
+
+}
+
+main().catch(console.error)
+
+async function listDatabases(client) {
+    databasesList = await client.db().admin().listDatabases();
+
+    console.log("Databases:");
+    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
+};
+*/
+
+
+
+
+
+const dataSchema = new mongoose.Schema({
+    day: Number,
+    rating: Number,
+    title: String,
+    happy: Boolean,
+    overwhelmed: Boolean,
+    sad: Boolean,
+    meh: Boolean,
+    heart: Boolean,
+    first_line: String,
+    second_line: String,
+    third_line: String,
+    fourth_line: String
+}, {collection: 'USA_collection'});
+
+const day_data = mongoose.model('day_data', dataSchema);
+
+
+/*
+json = {
+    day: req.body.id,
+    happy: req.body.happy,
+    ...
+}
+var data = new day_data(json);
+data.save()*/
+
+
+/*
+var id = req.body.id
+day_data.findById(id, function (err, doc) {
+    if (err) {
+        console.log(err)
+    }
+    doc.day = req.body.id;
+    ...
+})
+*/
+
+//
+//day_data.deleteMany({}, callback)
 
 router.post('/', (req, res) => {
+ 
     var dataset = require('../dataset.json');
-    console.log(dataset)
-    console.log("Länge: "+dataset.data.length)
-    res.send(req.body.data[0])
+    //console.log(dataset)
+    //console.log("Länge: "+dataset.data.length)
 
-    var id = req.body.data[0].id
+
+    json = {
+        day: req.body.data[0].day,
+        rating: req.body.data[0].rating,
+        title: req.body.data[0].title,
+        happy: req.body.data[0].happy,
+        overwhelmed: req.body.data[0].overwhelmed,
+        sad: req.body.data[0].sad,
+        meh: req.body.data[0].meh,
+        heart: req.body.data[0].heart
+    }
+    var data = new day_data(json);
+
+    day_data.findOne({day: req.body.data[0].day}, function(err, doc) {
+        if(doc){
+            day_data.findOneAndUpdate({ day: req.body.data[0].day }, json, function (err, doc) {
+                if (err) return console.log(err);
+                return console.log('Data for day ' + req.body.data[0].day + 'updated');
+            });
+        }else{
+            console.log('New Data for day ' + req.body.data[0].day + 'added')
+            data.save()
+        }
+    })
+    
+
+
+
+    
+    /*
+        var found_item = false
+
+        var id = req.body.data[0].id
     var rating = req.body.data[0].rating
     var title = req.body.data[0].title
     var happy = req.body.data[0].happy
@@ -17,12 +139,6 @@ router.post('/', (req, res) => {
     var sad = req.body.data[0].sad
     var meh = req.body.data[0].meh
     var heart = req.body.data[0].heart
-
-    var found_item = false
-
-
-
-    
 
     if(dataset.data.length == 0){
         dataset.data.push(req.body.data[0])
@@ -84,7 +200,51 @@ router.post('/', (req, res) => {
 
     }
 
+    */
+})
+
+
+router.get('/', (req, res) => {
+    day_data.find()
+        .then(function (doc) {
+            console.log('All Data sent')
+            res.send(doc)
+        })
     
+})
+
+router.get('/soft_delete', (req, res) => {
+    var json = {
+        rating: 5,
+        title: " ",
+        happy: false,
+        overwhelmed: false,
+        sad: false,
+        meh: false,
+        heart: false
+    }
+    day_data.updateMany({}, json, function (err, doc) {
+        if (err) return console.log(err);
+        return console.log('Soft delete for all data (Text remains)');
+    });
+})
+
+router.get('/hard_delete', (req, res) => {
+    day_data.deleteMany({},function (err, doc) {
+        console.log(doc.deletedCount + ' items deleted (hard)')
+    })
+})
+
+
+
+
+
+    
+module.exports = router;
+
+
+
+
 /*
     var obj = {
         "data": []
@@ -217,18 +377,3 @@ router.post('/', (req, res) => {
         console.error(err)
     }*/
 
-})
-
-
-router.get('/', (req, res) => {
-    var dataset_get = require('../dataset.json');
-    console.log(dataset_get)
-    res.send(dataset_get)
-})
-
-
-
-
-
-    
-module.exports = router;

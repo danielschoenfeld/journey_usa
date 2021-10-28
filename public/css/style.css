@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Assistant', sans-serif;
+}
+
+body {
+  overflow-y: hidden;
+  user-select: none;
+  
+}
+
+.main {
+    background-image: url('../img/background.jpg');
+    background-position-y: -20vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 90vh;
+    padding-top: 10vh;
+}
+
+.title {
+  width: 100%;
+  height: 55vh;
+}
+.first-part {
+  height: 13vh;
+  width: 80vw !important;
+  margin: auto;
+  text-align:center;
+}
+.second-part {
+  height: 11vh;
+  width: 80vw !important;
+  margin: auto;
+  text-align:center;
+}
+.banner {
+  height: auto;
+  width: 80vw !important;
+  margin: auto;
+  
+  text-align:center;
+
+  padding: 2vw;
+}
+h1 {
+  font-weight: bolder !important;
+  font-size: 15vh !important;
+  
+  color: rgb(22, 22, 22) !important;
+  
+
+}
+
+h2 {
+  font-weight: normal !important;
+  font-size: 10vh !important;
+  color: rgb(80, 76, 73) !important;
+  
+}
+
+h3 {
+  font-weight: normal !important;
+  font-size: 2vh !important;
+  color: rgb(29, 29, 29) !important;
+}
+
+h4 {
+  font-weight: bolder !important;
+  font-size: 2vh !important;
+  color: rgb(29, 29, 29) !important;
+}
+
+h5 {
+   font-weight: normal !important;
+  font-size: 2vh !important;
+  color: rgb(29, 29, 29) !important; 
+}
+
+.days {
+  text-align: center;
+}
+
+.hours, .seconds {
+  text-align: center;
+}
+
+.buttons {
+  margin-top: 5vh;
+}
+
+.slide-button {
+  font-size: 2vh !important;
+  background-color: #edc9af !important;
+     border-radius: 3vw !important;
+     float: left;
+     width: 35vw !important;
+  margin-left: 10vw !important;
+  box-shadow: 0 13px 25px 0 rgba(0,0,0,.3), 0 11px 7px 0 rgba(0,0,0,.19);
+}
+
+.overview-button {
+  font-size: 2vh !important;
+    background-color: #edc9af !important;
+     border-radius: 3vw !important;
+   width: 35vw !important;
+   margin-left: 10vw !important;
+   box-shadow: 0 13px 25px 0 rgba(0,0,0,.3), 0 11px 7px 0 rgba(0,0,0,.19);
+}
+
+
+.content {
+  width: 100vw;
+  height: 35vh;
+  margin: auto;
+  border-top-left-radius: 2.5vh;
+  border-top-right-radius: 2.5vh;
+                  background: rgb(223,213,202) !important;
+background: linear-gradient(225deg, rgba(223,213,202,1) 0%, rgba(217,204,191,1) 41%, rgba(221,209,197,1) 78%) !important;
+box-shadow: 0 13px 25px 0 rgba(0,0,0,.3), 0 11px 7px 0 rgba(0,0,0,.19);
+}
+

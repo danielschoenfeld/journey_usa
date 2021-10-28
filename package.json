@@ -18,6 +18,7 @@
     "homepage": "",
     "dependencies": {
         "express": "^4.17.1",
+        "mongoose": "^6.0.12",
         "requirejs": "^2.3.6"
     },
     "type": "commonjs"
