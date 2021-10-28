@@ -114,6 +114,7 @@ function slider(number) {
 
 
 function save(number) {
+    document.getElementById("save" + number).style.backgroundColor = "rgb(223,213,202) !important"
     console.log("New Data for day " + number + " saved")
     var obj = {
         "data": []
