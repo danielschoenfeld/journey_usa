@@ -18,7 +18,7 @@ background: linear-gradient(225deg, rgba(223,213,202,1) 0%, rgba(217,204,191,1) 
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
-    padding-top: 0.5vh;
+    padding-top: 1vh;
 }
 
 
@@ -27,7 +27,7 @@ background: linear-gradient(225deg, rgba(223,213,202,1) 0%, rgba(217,204,191,1) 
 }
 
 #slider {
-  height: 90vh;
+  height: 95vh;
   position: relative;
   perspective: 1000px;
   transform-style: preserve-3d; 
@@ -38,7 +38,7 @@ background: linear-gradient(225deg, rgba(223,213,202,1) 0%, rgba(217,204,191,1) 
     margin-right: 0;
   width: 68vw;
   max-width: 1000px;
-  height: 90vh;
+  height: 95vh;
   border-radius: 1.5vh;
   position: absolute;
   left: 0; right: 0;
