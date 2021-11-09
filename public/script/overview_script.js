@@ -23,7 +23,7 @@ window.onload = function () {
                     happy = happy + 1
                 }
                 if (data[i].sad) {
-                    sad = lsad + 1
+                    sad = sad + 1
                 }
                 if (data[i].meh) {
                     meh = meh + 1
